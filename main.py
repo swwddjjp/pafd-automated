@@ -7,6 +7,8 @@ import re
 
 from requests import session
 
+# update the respority
+
 class Fudan:
     """
     建立与复旦服务器的会话，执行登录/登出操作
