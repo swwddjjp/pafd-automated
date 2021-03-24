@@ -150,7 +150,9 @@ class Zlapp(Fudan):
 
         if last_info["d"]["info"]["date"] == today:
             print("\n*******今日已提交*******")
-            self.close()
+            # self.close()
+            self.last_info = last_info["d"]["info"]
+
         else:
             print("\n\n*******未提交*******")
             self.last_info = last_info["d"]["info"]
@@ -173,7 +175,9 @@ class Zlapp(Fudan):
         geo_api_info = json_loads(self.last_info["geo_api_info"])
         province = geo_api_info["addressComponent"].get("province", "")
         # if city is none , put the province instead
-        city = geo_api_info["addressComponent"].get("city", province)
+        city = geo_api_info["addressComponent"].get("city", "")
+        if city == "":
+            city = province
         district = geo_api_info["addressComponent"].get("district", "")
         # format changed, now_time added
         self.last_info.update(
@@ -188,15 +192,15 @@ class Zlapp(Fudan):
                 }
         )
         # check the post format
-        # print(self.last_info)
-        save = self.session.post(
-                'https://zlapp.fudan.edu.cn/ncov/wap/fudan/save',
-                data=self.last_info,
-                headers=headers,
-                allow_redirects=False)
+        print(self.last_info)
+        # save = self.session.post(
+        #         'https://zlapp.fudan.edu.cn/ncov/wap/fudan/save',
+        #         data=self.last_info,
+        #         headers=headers,
+        #         allow_redirects=False)
 
-        save_msg = json_loads(save.text)["m"]
-        print(save_msg, '\n\n')
+        # save_msg = json_loads(save.text)["m"]
+        # print(save_msg, '\n\n')
 
 def get_account():
     """
