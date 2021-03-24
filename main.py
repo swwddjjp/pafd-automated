@@ -179,7 +179,7 @@ class Zlapp(Fudan):
         if city == "":
             city = province
         district = geo_api_info["addressComponent"].get("district", "")
-        # format changed, now_time added
+        # format changed, now_time realname number added
         self.last_info.update(
                 {
                     "now_time": int(time.time()*100),
