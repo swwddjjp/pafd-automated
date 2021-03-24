@@ -1,6 +1,6 @@
 import time
 from json import loads as json_loads
-from os import path as os_path, getenv
+from os import name, path as os_path, getenv
 from sys import exit as sys_exit
 from getpass import getpass
 import re
@@ -144,10 +144,9 @@ class Zlapp(Fudan):
 
         today = time.strftime("%Y%m%d", time.localtime())
 
-        # json changed 
-        # print(self.last_info)
-        # print(self.last_info["d"]["info"]["geo_api_info"])
-        # print(json_loads(last_info["d"]["info"]["geo_api_info"]))
+        self.name = last_info["uinfo"]["realname"]
+
+        print(self.name)
 
         if last_info["d"]["info"]["date"] == today:
             print("\n*******今日已提交*******")
@@ -170,21 +169,26 @@ class Zlapp(Fudan):
         }
 
         print("\n\n◉◉提交中")
-
+        # print(self.last_info)
         geo_api_info = json_loads(self.last_info["geo_api_info"])
         province = geo_api_info["addressComponent"].get("province", "")
-        city = geo_api_info["addressComponent"].get("city", "")
+        # if city is none , put the province instead
+        city = geo_api_info["addressComponent"].get("city", province)
         district = geo_api_info["addressComponent"].get("district", "")
-        print(province,city,district)
+        # format changed, now_time added
         self.last_info.update(
                 {
+                    "now_time": int(time.time()*100),
                     "tw"      : "13",
                     "province": province,
                     "city"    : city,
-                    "area"    : " ".join((province, city, district))
+                    "area"    : " ".join((province, city, district)),
+                    "realname": self.name,
+                    "number"  : self.uid
                 }
         )
-        # TODO: check the post format
+        # check the post format
+        print(self.last_info)
         save = self.session.post(
                 'https://zlapp.fudan.edu.cn/ncov/wap/fudan/save',
                 data=self.last_info,
@@ -237,3 +241,4 @@ if __name__ == '__main__':
     # 再检查一遍
     daily_fudan.check()
     daily_fudan.close(1)
+    
