@@ -15,7 +15,22 @@
 
 
 'addressComponent': {'citycode': '021', 'adcode': '310109', 
-'businessAreas': [{'name': '曲阳', 'id': '310109', 'location': {'Q': 31.281201, 'R': 121.49283200000002, 'lng': 121.492832, 'lat': 31.281201}}, {'name': '江湾', 'id': '310110', 'location': {'Q': 31.310831, 'R': 121.49710900000002, 'lng': 121.497109, 'lat': 31.310831}}, {'name': '运光', 'id': '310109', 'location': {'Q': 31.29198, 'R': 121.493426, 'lng': 121.493426, 'lat': 31.29198}}], 'neighborhoodType': '', 'neighborhood': '', 'building': '', 'buildingType': '', 'street': '政肃路', 'streetNumber': '182号', 'country': '中国', 'province': '上海市', 'city': '', 'district': '虹口区', 'township': '曲阳路街道'}, 
+'businessAreas':    [{'name': '曲阳', 'id': '310109', 'location': 
+                        {'Q': 31.281201, 'R': 121.49283200000002, 'lng': 121.492832, 'lat': 31.281201}}, 
+                    {'name': '江湾', 'id': '310110', 'location': 
+                        {'Q': 31.310831, 'R': 121.49710900000002, 'lng': 121.497109, 'lat': 31.310831}}, 
+                    {'name': '运光', 'id': '310109', 'location': 
+                        {'Q': 31.29198, 'R': 121.493426, 'lng': 121.493426, 'lat': 31.29198}}],
+                    'neighborhoodType': '', 'neighborhood': '', 'building': '', 'buildingType': '',
+                    'street': '政肃路', 'streetNumber': '182号', 
+                    'country': '中国', 'province': '上海市', 'city': '', 'district': '虹口区', 'township': '曲阳路街道'}, 
 
 
 'formattedAddress': '上海市虹口区曲阳路街道复旦大学南区分团委·学生会复旦大学南区学生公寓', 'roads': [], 'crosses': [], 'pois': [], 'info': 'SUCCESS'}
+
+
+{'tw': '13', 'sfcxtz': '0', 'sfjcbh': '0', 'sfcxzysx': '0', 'qksm': '', 'sfyyjc': '0', 'jcjgqr': '0', 'remark': '',
+ 'address': '上海市虹口区曲阳路街道复旦大学南区分团委·学生会复旦大学南区学生公寓', 
+ 'geo_api_info': '{"type":"complete","position":{"Q":31.29137858073,"R":121.50122205946201,"lng":121.501222,"lat":31.291379},"location_type":"html5","message":"Get geolocation success.Convert Success.Get address success.","accuracy":150,"isConverted":true,"status":1,"addressComponent":{"citycode":"021","adcode":"310109","businessAreas":[{"name":"曲阳","id":"310109","location":{"Q":31.281201,"R":121.49283200000002,"lng":121.492832,"lat":31.281201}},{"name":"江湾","id":"310110","location":{"Q":31.310831,"R":121.49710900000002,"lng":121.497109,"lat":31.310831}},{"name":"运光","id":"310109","location":{"Q":31.29198,"R":121.493426,"lng":121.493426,"lat":31.29198}}],
+"neighborhoodType":"","neighborhood":"","building":"","buildingType":"","street":"政肃路","streetNumber":"182号","country":"中国","province":"上海市","city":"","district":"虹口区","township":"曲阳路街道"},"formattedAddress":"上海市虹口区曲阳路街道复旦大学南区
+分团委·学生会复旦大学南区学生公寓","roads":[],"crosses":[],"pois":[],"info":"SUCCESS"}', 'area': '', 'province': '', 'city': '', 'sfzx': '0', 'sfjcwhry': '0', 'sfjchbry': '0', 'sfcyglq': '0', 'gllx': '', 'glksrq': '', 'jcbhlx': '', 'jcbhrq': '', 'bztcyy': '', 'sftjhb': '0', 'sftjwh': '0', 'gwszdd': '', 'sfpcgr': '0', 'jrszss': '', 'glfs': '', 'glgcdd': '', 'glqsrq': '', 'gljsrq': '', 'gzdd': '', 'sfwztl': '0', 'sftztl': '0', 'sffsksfl': '0', 'sfzgn': 1, 'sfjczgfxry': '0', 'sfcyglgcq': '0', 'fxyy': '', 'uid': '62211', 'created': 1616471662, 'date': '20210323', 'jcqzrq': '', 'sfjcqz': '', 'jhfjrq': '', 'fhjtgj': '', 'fhjtgjbc': '', 'id': 17259267, 'sfyqjzgc': '', 'jrsfqzys': '', 'jrsfqzfy': '', 'jrdqtlqk': [], 'jrdqjcqk': [], 'sfyjfx': '0', 'sfjzxnss': '0', 'yjrxsj': '', 'rzqs': '', 'dsxm': '', 'wyyd': '0', 'bzxxzdz': '', 'xjrdxq': '', 'tjfs': '', 'fhjtgjzwh': ''}
