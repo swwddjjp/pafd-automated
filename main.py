@@ -144,9 +144,9 @@ class Zlapp(Fudan):
 
         today = time.strftime("%Y%m%d", time.localtime())
 
-        self.name = last_info["uinfo"]["realname"]
+        self.name = last_info["d"]["uinfo"]["realname"]
 
-        print(self.name)
+        # print(self.name)
 
         if last_info["d"]["info"]["date"] == today:
             print("\n*******今日已提交*******")
@@ -188,7 +188,7 @@ class Zlapp(Fudan):
                 }
         )
         # check the post format
-        print(self.last_info)
+        # print(self.last_info)
         save = self.session.post(
                 'https://zlapp.fudan.edu.cn/ncov/wap/fudan/save',
                 data=self.last_info,
