@@ -1,11 +1,14 @@
 import time
 from json import loads as json_loads
-from os import path as os_path, getenv
+from os import name, path as os_path, getenv
 from sys import exit as sys_exit
 from getpass import getpass
 import re
 
 from requests import session
+
+# update for second time
+# update the respority
 
 class Fudan:
     """
@@ -64,6 +67,7 @@ class Fudan:
 
         # 获取登录页上的令牌
         result = re.findall('<input type="hidden" name="([a-zA-Z0-9\-_]+)" value="([a-zA-Z0-9\-_]+)"/?>', page_login)
+        # print(page_login)
         # print(result)
         # result 是一个列表，列表中的每一项是包含 name 和 value 的 tuple，例如
         # [('lt', 'LT-6711210-Ia3WttcMvLBWNBygRNHdNzHzB49jlQ1602983174755-7xmC-cas'), ('dllt', 'userNamePasswordLogin'), ('execution', 'e1s1'), ('_eventId', 'submit'), ('rmShown', '1')]
@@ -140,12 +144,19 @@ class Zlapp(Fudan):
 
         today = time.strftime("%Y%m%d", time.localtime())
 
+        self.name = last_info["d"]["uinfo"]["realname"]
+
+        # print(self.name)
+
         if last_info["d"]["info"]["date"] == today:
             print("\n*******今日已提交*******")
             self.close()
+            # self.last_info = last_info["d"]["info"]
+
         else:
             print("\n\n*******未提交*******")
             self.last_info = last_info["d"]["oldInfo"]
+
 
     def checkin(self):
         """
@@ -160,20 +171,26 @@ class Zlapp(Fudan):
         }
 
         print("\n\n◉◉提交中")
-
+        # print(self.last_info)
         geo_api_info = json_loads(self.last_info["geo_api_info"])
         province = self.last_info["province"]
         city = self.last_info["city"]
+
         district = geo_api_info["addressComponent"].get("district", "")
+        # format changed, now_time realname number added
         self.last_info.update(
                 {
+                    "now_time": int(time.time()*100),
                     "tw"      : "13",
                     "province": province,
                     "city"    : city,
-                    "area"    : " ".join((province, city, district))
+                    "area"    : " ".join((province, city, district)),
+                    "realname": self.name,
+                    "number"  : self.uid
                 }
         )
-
+        # check the post format
+        # print(self.last_info)
         save = self.session.post(
                 'https://zlapp.fudan.edu.cn/ncov/wap/fudan/save',
                 data=self.last_info,
@@ -225,4 +242,5 @@ if __name__ == '__main__':
     daily_fudan.checkin()
     # 再检查一遍
     daily_fudan.check()
-    daily_fudan.close(1)
+    daily_fudan.close(0)
+    
