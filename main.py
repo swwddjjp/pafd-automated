@@ -9,7 +9,7 @@ from requests import session
 
 # update for second time
 # update the respority
-
+# updata for auto grade
 class Fudan:
     """
     建立与复旦服务器的会话，执行登录/登出操作
