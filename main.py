@@ -7,10 +7,7 @@ import re
 
 from requests import session
 
-# update for second time
-# update the respority
-# updata for auto grade
-# update for auto grade again
+from ddddocr import DdddOcr
 
 class Fudan:
     """
@@ -179,6 +176,10 @@ class Zlapp(Fudan):
         city = self.last_info["city"]
 
         district = geo_api_info["addressComponent"].get("district", "")
+
+        # get verification code
+        code = self.get_verification_code()
+
         # format changed, now_time realname number added
         self.last_info.update(
                 {
@@ -188,7 +189,8 @@ class Zlapp(Fudan):
                     "city"    : city,
                     "area"    : " ".join((province, city, district)),
                     "realname": self.name,
-                    "number"  : self.uid
+                    "number"  : self.uid,
+                    "code"    : code
                 }
         )
         # check the post format
@@ -201,6 +203,12 @@ class Zlapp(Fudan):
 
         save_msg = json_loads(save.text)["m"]
         print(save_msg, '\n\n')
+
+    def get_verification_code(self) -> str:
+        verification_code = self.session.get('https://zlapp.fudan.edu.cn/backend/default/code').content
+        ocr = DdddOcr()
+        return ocr.classification(verification_code)
+    
 
 def get_account():
     """
