@@ -20,5 +20,8 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: Install requirements
+        run: pip3 install -r ./ddddocr/requirements.txt
+
       - name: run
         run: STD_ID=${{ secrets.STD_ID }} PASSWORD=${{ secrets.PASSWORD }} python3 main.py
